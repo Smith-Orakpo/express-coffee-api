@@ -5,8 +5,11 @@ import middleware from "../middleware"
 
 const app = express()
 middleware(app)
-app.use("/", router)
 
+app.get("/", (request, response) =>
+	response.status(200).send("coffee house api")
+)
+app.use("/api/v1", router)
 app.use((request, response) => response.status(404).send("resource not found"))
 app.use((error, request, response, next) => {
 	console.error(error.message)

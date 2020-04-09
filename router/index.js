@@ -1,8 +1,9 @@
 import { Router } from "express"
-import { main } from "../controller"
+import { users } from "../controller"
 
 const router = Router()
 
-router.get("/", main)
+router.post("users/login", users.login)
+router.post("users/register", users.register)
 
 export default router
